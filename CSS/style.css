@@ -89,7 +89,8 @@
     color: black;
     font-size: 60px;
     padding-left: 50px;
-    
+    text-transform: uppercase;
+    text-shadow: 0 0 20px blue;
   }
   .landing-page .content .info p {
     margin: 0;
