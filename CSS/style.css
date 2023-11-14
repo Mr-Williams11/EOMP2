@@ -1,13 +1,92 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: Arial;
+  background-color: white;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+.container {
+  color: black;
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.slogan {
+  text-align: right;
+  width: 100%;
+  font-size: 2em;
+  color: black; /* Set your desired text color */
+}
+
+.stack {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.stack span {
+  font-weight: bold;
+  color: black;
+  grid-row-start: 1;
+  grid-column-start: 1;
+  font-size: 11rem;
+  --stack-height: calc(100% / var(--stacks) - 1px);
+  --inverse-index: calc(calc(var(--stacks) - 1) - var(--index));
+  --clip-top: calc(var(--stack-height) * var(--index));
+  --clip-bottom: calc(var(--stack-height) * var(--inverse-index));
+  clip-path: inset(var(--clip-top) 0 var(--clip-bottom) 0);
+  animation: stack 340ms cubic-bezier(.46,.29,0,1.24) 1 backwards calc(var(--index) * 120ms), glitch 0.8s ease infinite 0.5s alternate-reverse;
+}
+
+.stack span:nth-child(odd) { --glitch-translate: 8px; }
+.stack span:nth-child(even) { --glitch-translate: -8px; }
+
+@keyframes stack {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%);
+    text-shadow: -2px 3px 0 red, 2px -3px 0 blue;
+  };
+  60% {
+    opacity: 0.5;
+    transform: translateX(50%);
   }
-  body {
-    font-family: 'Open Sans', sans-serif;
-    background-color: #bacccd;
-    height: 100%;
+  80% {
+    transform: none;
+    opacity: 1;
+    text-shadow: 2px -3px 0 red, -2px 3px 0 blue;
   }
+  100% {
+    text-shadow: none;
+  }
+}
+
+@keyframes glitch {
+  0% {
+    text-shadow: -2px 3px 0 red, 2px -3px 0 blue;
+    transform: translate(var(--glitch-translate));
+  }
+  2% {
+    text-shadow: 2px -3px 0 red, -2px 3px 0 blue;
+  }
+  4%, 100% {  text-shadow: none; transform: none; }
+}
   a {
     text-decoration: none;
   }
@@ -16,13 +95,7 @@
     padding: 0;
     margin: 0;
   }
-  .container {
-    padding-left: 15px;
-    padding-right: 15px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
+
   /* Start Landing Page */
   .landing-page header {
     min-height: 80px;
@@ -40,16 +113,18 @@
     text-decoration: underline;
     text-transform: uppercase;
     font-size: 30px;
+    top: 5%;
     left: 5%;
     position: absolute;
   }
 
   .landing-page header .links {
+    top: 5%;
     display: flex;
-    align-items: center;
     position: absolute;
     right: 10%;
     justify-content: space-between;
+    z-index: 1;
   }
 
   .landing-page header .links li {
@@ -66,8 +141,8 @@
     color: black;
   }
   .landing-page header .links li:not(:last-child):hover {
-    color: white;
-    text-decoration: 0 0 20px white;
+    color: black;
+    text-decoration: 0 0 20px black;
     border-radius: 20px;
   }
   .landing-page header .links li:last-child:hover {
@@ -83,29 +158,6 @@
     justify-content: space-between;
     gap: 140px;
     min-height: calc(100vh - 80px);
-  }
-
-  .landing-page .content .info h1 {
-    color: black;
-    font-size: 60px;
-    padding-left: 50px;
-    text-transform: uppercase;
-    text-shadow: 0 0 20px blue;
-  }
-  .landing-page .content .info p {
-    margin: 0;
-    font-size: 20px;
-    color: black;
-    padding-left: 50px;
-  }
-  .landing-page .content .info button {
-    border: 0;
-    border-radius: 20px;
-    padding: 12px 30px;
-    margin-top: 30px;
-    cursor: pointer;
-    color: #FFF;
-    background-color: #6c63ff;
   }
   /* End Landing Page */
   
@@ -238,3 +290,8 @@
   }
   
   /* Contact Page */
+
+
+  /* Animation Setttings */
+
+  
