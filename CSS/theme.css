@@ -12,7 +12,7 @@
   }
   
   body.dark-mode {
-    background-color: black;
+    background: linear-gradient(-24.7deg, black 50%, red 50%);
   }
 
   .dark-mode button{
@@ -37,4 +37,12 @@
 
   .dark-mode .landing-page header .links li {
     color: white;
+  }
+
+  .dark-mode .landing-page header .links li:last-child:hover {
+    border-radius: 20px;
+    padding: 10px 20px;
+    color: red;
+    background-color: black;
+    box-shadow: 0 0 20px white;
   }
