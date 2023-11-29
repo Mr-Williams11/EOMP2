@@ -49,8 +49,7 @@ body {
 
 .stack span {
   font-weight: bold;
-  color: red;
-  -webkit-text-stroke: 5px black;
+  color: black;
   grid-row-start: 1;
   grid-column-start: 1;
   font-size: 11rem;
@@ -171,15 +170,20 @@ body {
     padding-top: 15px;
     padding-left: 50px;
   }
-  /* Shoes Page */
+  /* Shoes Page */ 
   
   
   /* Clothes Page */
   .product-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    margin: 20px;
+    position: absolute;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    column-gap: 3rem;
+    gap: 20px;
+    padding: 20px;
+    left: 20%;
+    top: 15%;
   }
   
   .product-container .product {
@@ -189,13 +193,13 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin: 10px;
     padding: 20px;
-    max-width: 300px;
+    width: 300px;
     text-align: center;
   }
   
   .product-container .product img {
-    max-width: 100%;
-    height: auto;
+    width: 200px;
+    height: 200px;
   }
   
   .product-container .price {
